@@ -4,11 +4,9 @@ import javafx.scene.control.Cell;
 
 public class PuzzleImpl implements Puzzle {
   private int[][] board;
-  private CellType[][] cell;
-  private int[][] clue;
 
   public PuzzleImpl(int[][] board) {
-    this.board = board;
+    this.board = board.clone();
   }
 
   public int getWidth() {
@@ -20,10 +18,29 @@ public class PuzzleImpl implements Puzzle {
   }
 
   public CellType getCellType(int r, int c) {
-    return this.cell[r][c];
+    if (r < 0 || c < 0 || r >= this.board[0].length || c >= this.board.length) {
+      throw new IndexOutOfBoundsException();
+    }
+    if (this.board[r][c] == 0
+        || this.board[r][c] == 1
+        || this.board[r][c] == 2
+        || this.board[r][c] == 3
+        || this.board[r][c] == 4) {
+      return CellType.CLUE;
+    } else if (this.board[r][c] == 5) {
+      return CellType.WALL;
+    } else {
+      return CellType.CORRIDOR;
+    }
   }
 
   public int getClue(int r, int c) {
-    return this.clue[r][c];
+    if (r < 0 || c < 0 || r >= this.board[0].length || c >= this.board.length) {
+      throw new IndexOutOfBoundsException();
+    }
+    if (this.getCellType(r, c) != CellType.CLUE) {
+      throw new IllegalArgumentException();
+    }
+    return this.board[r][c];
   }
 }

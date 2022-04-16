@@ -1,0 +1,170 @@
+package com.comp301.a09akari.model;
+
+public class ModelImpl implements Model {
+  private PuzzleLibrary library;
+  private int activePuzzle;
+  private boolean[][] lamp;
+
+  public ModelImpl(PuzzleLibrary library) {
+    if (library.size() == 0) {
+      throw new IllegalArgumentException();
+    }
+    this.library = library;
+    this.activePuzzle = 0;
+    this.lamp =
+        new boolean[this.library.getPuzzle(0).getHeight() - 1]
+            [this.library.getPuzzle(0).getWidth() - 1];
+  }
+
+  public void addLamp(int r, int c) {
+    if (r < 0
+        || c < 0
+        || r >= this.library.getPuzzle(this.activePuzzle).getWidth()
+        || c >= this.library.getPuzzle(this.activePuzzle).getHeight()) {
+      throw new IndexOutOfBoundsException();
+    }
+    if (this.library.getPuzzle(activePuzzle).getCellType(r, c) != CellType.CORRIDOR) {
+      throw new IllegalArgumentException();
+    }
+    if (!this.lamp[r][c]) {
+      this.lamp[r][c] = true;
+    }
+  }
+
+  public void removeLamp(int r, int c) {
+    if (r < 0
+        || c < 0
+        || r >= this.library.getPuzzle(this.activePuzzle).getWidth()
+        || c >= this.library.getPuzzle(this.activePuzzle).getHeight()) {
+      throw new IndexOutOfBoundsException();
+    }
+    if (this.library.getPuzzle(activePuzzle).getCellType(r, c) != CellType.CORRIDOR) {
+      throw new IllegalArgumentException();
+    }
+    if (this.lamp[r][c]) {
+      this.lamp[r][c] = false;
+    }
+  }
+
+  public boolean isLit(int r, int c) {
+    if (r < 0
+        || c < 0
+        || r >= this.library.getPuzzle(this.activePuzzle).getWidth()
+        || c >= this.library.getPuzzle(this.activePuzzle).getHeight()) {
+      throw new IndexOutOfBoundsException();
+    }
+    if (this.library.getPuzzle(activePuzzle).getCellType(r, c) != CellType.CORRIDOR) {
+      throw new IllegalArgumentException();
+    }
+    if (this.lamp[r][c]) {
+      return true;
+    }
+    for (int i = c; i >= 0; i--) {
+      if (this.library.getPuzzle(this.activePuzzle).getCellType(r, i) != CellType.CORRIDOR) {
+        break;
+      }
+      if (this.lamp[r][i]) {
+        return true;
+      }
+    }
+    for (int i = c; i < this.library.getPuzzle(this.activePuzzle).getWidth(); i++) {
+      if (this.library.getPuzzle(this.activePuzzle).getCellType(r, i) != CellType.CORRIDOR) {
+        break;
+      }
+      if (this.lamp[r][i]) {
+        return true;
+      }
+    }
+    for (int i = r; i >= 0; i--) {
+      if (this.library.getPuzzle(this.activePuzzle).getCellType(i, c) != CellType.CORRIDOR) {
+        break;
+      }
+      if (this.lamp[i][c]) {
+        return true;
+      }
+    }
+    for (int i = r; i < this.library.getPuzzle(this.activePuzzle).getHeight(); i++) {
+      if (this.library.getPuzzle(this.activePuzzle).getCellType(i, c) != CellType.CORRIDOR) {
+        break;
+      }
+      if (this.lamp[i][c]) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public boolean isLamp(int r, int c) {
+    if (r < 0
+        || c < 0
+        || r >= this.library.getPuzzle(this.activePuzzle).getWidth()
+        || c >= this.library.getPuzzle(this.activePuzzle).getHeight()) {
+      throw new IndexOutOfBoundsException();
+    }
+    if (this.library.getPuzzle(activePuzzle).getCellType(r, c) != CellType.CORRIDOR) {
+      throw new IllegalArgumentException();
+    }
+    return this.lamp[r][c];
+  }
+
+  public boolean isLampIllegal(int r, int c) {
+    if (r < 0
+            || c < 0
+            || r >= this.library.getPuzzle(this.activePuzzle).getWidth()
+            || c >= this.library.getPuzzle(this.activePuzzle).getHeight()) {
+      throw new IndexOutOfBoundsException();
+    }
+    if (this.library.getPuzzle(activePuzzle).getCellType(r, c) != CellType.CORRIDOR) {
+      throw new IllegalArgumentException();
+    }
+    if(isLamp(r, c)) {
+      return isLit(r, c);
+    } else {
+      return false;
+    }
+
+  }
+
+  public Puzzle getActivePuzzle() {
+    return this.library.getPuzzle(this.activePuzzle);
+  }
+
+  public int getActivePuzzleIndex() {
+    return this.activePuzzle;
+  }
+
+  public void setActivePuzzleIndex(int index) {
+    if(index < 0 || index >= this.library.size()) {
+      throw new IndexOutOfBoundsException();
+    }
+    this.activePuzzle = index;
+  }
+
+  public int getPuzzleLibrarySize() {
+    return this.library.size();
+  }
+
+  public void resetPuzzle() {
+    this.lamp = new boolean[this.library.getPuzzle(this.activePuzzle).getWidth()][this.library.getPuzzle(this.activePuzzle).getHeight()];
+  }
+
+  public boolean isSolved() {
+    for(int i = 0; i < this.library.getPuzzle(this.activePuzzle).getWidth(); i++) {
+      for(int j = 0; j < this.library.getPuzzle(this.activePuzzle).getHeight(); j++) {
+        if(!isLit(i, j)) {
+          return false;
+        }
+        if(!isLampIllegal(i, j)) {
+          return false;
+        }
+        if(this.library.getPuzzle(this.activePuzzle).getCellType(i, j) == CellType.CLUE) {
+
+
+        }
+
+      }
+    }
+
+  }
+
+}
