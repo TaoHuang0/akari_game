@@ -122,7 +122,10 @@ public class ModelImpl implements Model {
     if (this.library.getPuzzle(activePuzzle).getCellType(r, c) != CellType.CORRIDOR) {
       throw new IllegalArgumentException();
     }
-    for (int i = c; i >= 0; i--) {
+    if (!this.lamp[r][c]) {
+      return false;
+    }
+    for (int i = c - 1; i >= 0; i--) {
       if (this.library.getPuzzle(this.activePuzzle).getCellType(r, i) != CellType.CORRIDOR) {
         break;
       }
@@ -130,7 +133,7 @@ public class ModelImpl implements Model {
         return true;
       }
     }
-    for (int i = c; i < this.library.getPuzzle(this.activePuzzle).getWidth(); i++) {
+    for (int i = c + 1; i < this.library.getPuzzle(this.activePuzzle).getWidth(); i++) {
       if (this.library.getPuzzle(this.activePuzzle).getCellType(r, i) != CellType.CORRIDOR) {
         break;
       }
@@ -138,7 +141,7 @@ public class ModelImpl implements Model {
         return true;
       }
     }
-    for (int i = r; i >= 0; i--) {
+    for (int i = r - 1; i >= 0; i--) {
       if (this.library.getPuzzle(this.activePuzzle).getCellType(i, c) != CellType.CORRIDOR) {
         break;
       }
@@ -146,7 +149,7 @@ public class ModelImpl implements Model {
         return true;
       }
     }
-    for (int i = r; i < this.library.getPuzzle(this.activePuzzle).getHeight(); i++) {
+    for (int i = r + 1; i < this.library.getPuzzle(this.activePuzzle).getHeight(); i++) {
       if (this.library.getPuzzle(this.activePuzzle).getCellType(i, c) != CellType.CORRIDOR) {
         break;
       }
