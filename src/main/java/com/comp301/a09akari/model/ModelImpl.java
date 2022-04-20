@@ -114,19 +114,25 @@ public class ModelImpl implements Model {
 
   public boolean isLampIllegal(int r, int c) {
     System.out.println("row: " + r + " column: " + c);
+    System.out.println(this.library.getPuzzle(this.activePuzzle).getWidth());
+    System.out.println(this.library.getPuzzle(this.activePuzzle).getHeight());
     if (r < 0
         || c < 0
-        || r > this.library.getPuzzle(this.activePuzzle).getWidth()
-        || c > this.library.getPuzzle(this.activePuzzle).getHeight()) {
+        || r >= this.library.getPuzzle(this.activePuzzle).getWidth()
+        || c >= this.library.getPuzzle(this.activePuzzle).getHeight()) {
+      System.out.println("123");
       throw new IndexOutOfBoundsException();
     }
     if (this.library.getPuzzle(activePuzzle).getCellType(r, c) != CellType.CORRIDOR) {
+      System.out.println("456");
       throw new IllegalArgumentException();
     }
     if (!this.lamp[r][c]) {
+      System.out.println("789");
       return false;
     }
     for (int i = c - 1; i >= 0; i--) {
+      System.out.println("abc");
       if (this.library.getPuzzle(this.activePuzzle).getCellType(r, i) != CellType.CORRIDOR) {
         break;
       }
@@ -135,6 +141,7 @@ public class ModelImpl implements Model {
       }
     }
     for (int i = c + 1; i < this.library.getPuzzle(this.activePuzzle).getWidth(); i++) {
+      System.out.println("def");
       if (this.library.getPuzzle(this.activePuzzle).getCellType(r, i) != CellType.CORRIDOR) {
         break;
       }
@@ -143,6 +150,7 @@ public class ModelImpl implements Model {
       }
     }
     for (int i = r - 1; i >= 0; i--) {
+      System.out.println("ghi");
       if (this.library.getPuzzle(this.activePuzzle).getCellType(i, c) != CellType.CORRIDOR) {
         break;
       }
@@ -151,6 +159,7 @@ public class ModelImpl implements Model {
       }
     }
     for (int i = r + 1; i < this.library.getPuzzle(this.activePuzzle).getHeight(); i++) {
+      System.out.println("jkl");
       if (this.library.getPuzzle(this.activePuzzle).getCellType(i, c) != CellType.CORRIDOR) {
         break;
       }
