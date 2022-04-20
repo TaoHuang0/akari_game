@@ -178,8 +178,8 @@ public class ModelImpl implements Model {
 
   public void resetPuzzle() {
     this.lamp =
-        new boolean[this.library.getPuzzle(this.activePuzzle).getWidth()]
-            [this.library.getPuzzle(this.activePuzzle).getHeight()];
+        new boolean[this.library.getPuzzle(this.activePuzzle).getWidth() - 1]
+            [this.library.getPuzzle(this.activePuzzle).getHeight() - 1];
   }
 
   public boolean isClueSatisfied(int r, int c) {
