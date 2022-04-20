@@ -113,6 +113,7 @@ public class ModelImpl implements Model {
   }
 
   public boolean isLampIllegal(int r, int c) {
+    System.out.println("row: " + r + " column: " + c);
     if (r < 0
         || c < 0
         || r >= this.library.getPuzzle(this.activePuzzle).getWidth()
