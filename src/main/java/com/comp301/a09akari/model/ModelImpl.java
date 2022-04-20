@@ -116,8 +116,8 @@ public class ModelImpl implements Model {
     System.out.println("row: " + r + " column: " + c);
     if (r < 0
         || c < 0
-        || r >= this.library.getPuzzle(this.activePuzzle).getWidth()
-        || c >= this.library.getPuzzle(this.activePuzzle).getHeight()) {
+        || r > this.library.getPuzzle(this.activePuzzle).getWidth()
+        || c > this.library.getPuzzle(this.activePuzzle).getHeight()) {
       throw new IndexOutOfBoundsException();
     }
     if (this.library.getPuzzle(activePuzzle).getCellType(r, c) != CellType.CORRIDOR) {
