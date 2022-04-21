@@ -260,10 +260,12 @@ public class ModelImpl implements Model {
           System.out.println("a");
           return false;
         }
+        System.out.println("888");
         if (isLampIllegal(i, j)) {
           System.out.println("b");
           return false;
         }
+        System.out.println("777");
         if (this.library.getPuzzle(this.activePuzzle).getCellType(i, j) == CellType.CLUE) {
           System.out.println("c");
           if (!isClueSatisfied(i, j)) {
