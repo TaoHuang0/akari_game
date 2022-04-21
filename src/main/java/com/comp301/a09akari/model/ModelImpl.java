@@ -230,27 +230,6 @@ public class ModelImpl implements Model {
         lampCounter++;
       }
     }
-    if (r - 1 >= 0 && c - 1 >= 0) {
-      if (this.lamp[r - 1][c - 1]) {
-        lampCounter++;
-      }
-    }
-    if (r + 1 < this.library.getPuzzle(this.activePuzzle).getHeight() && c - 1 >= 0) {
-      if (this.lamp[r + 1][c - 1]) {
-        lampCounter++;
-      }
-    }
-    if (r + 1 < this.library.getPuzzle(this.activePuzzle).getHeight()
-        && c + 1 < this.library.getPuzzle(this.activePuzzle).getWidth()) {
-      if (this.lamp[r + 1][c + 1]) {
-        lampCounter++;
-      }
-    }
-    if (r - 1 >= 0 && c + 1 < this.library.getPuzzle(this.activePuzzle).getWidth()) {
-      if (this.lamp[r - 1][c + 1]) {
-        lampCounter++;
-      }
-    }
     return (lampCounter == this.library.getPuzzle(this.activePuzzle).getClue(r, c));
   }
 
