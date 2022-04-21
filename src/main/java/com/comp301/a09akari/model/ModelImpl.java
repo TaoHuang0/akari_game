@@ -121,26 +121,19 @@ public class ModelImpl implements Model {
   }
 
   public boolean isLampIllegal(int r, int c) {
-    System.out.println("row: " + r + " column: " + c);
-    System.out.println(this.library.getPuzzle(this.activePuzzle).getHeight());
-    System.out.println(this.library.getPuzzle(this.activePuzzle).getWidth());
     if (r < 0
         || c < 0
         || r >= this.library.getPuzzle(this.activePuzzle).getHeight()
         || c >= this.library.getPuzzle(this.activePuzzle).getWidth()) {
-      System.out.println("123");
       throw new IndexOutOfBoundsException();
     }
     if (this.library.getPuzzle(activePuzzle).getCellType(r, c) != CellType.CORRIDOR) {
-      System.out.println("456");
       throw new IllegalArgumentException();
     }
     if (!this.lamp[r][c]) {
-      System.out.println("789");
       return false;
     }
     for (int i = c - 1; i >= 0; i--) {
-      System.out.println("abc");
       if (this.library.getPuzzle(this.activePuzzle).getCellType(r, i) != CellType.CORRIDOR) {
         break;
       }
@@ -149,7 +142,6 @@ public class ModelImpl implements Model {
       }
     }
     for (int i = c + 1; i < this.library.getPuzzle(this.activePuzzle).getWidth(); i++) {
-      System.out.println("def");
       if (this.library.getPuzzle(this.activePuzzle).getCellType(r, i) != CellType.CORRIDOR) {
         break;
       }
@@ -158,7 +150,6 @@ public class ModelImpl implements Model {
       }
     }
     for (int i = r - 1; i >= 0; i--) {
-      System.out.println("ghi");
       if (this.library.getPuzzle(this.activePuzzle).getCellType(i, c) != CellType.CORRIDOR) {
         break;
       }
@@ -167,7 +158,6 @@ public class ModelImpl implements Model {
       }
     }
     for (int i = r + 1; i < this.library.getPuzzle(this.activePuzzle).getHeight(); i++) {
-      System.out.println("jkl");
       if (this.library.getPuzzle(this.activePuzzle).getCellType(i, c) != CellType.CORRIDOR) {
         break;
       }
@@ -203,10 +193,8 @@ public class ModelImpl implements Model {
   public void resetPuzzle() {
     for (int i = 0; i < this.library.getPuzzle(this.activePuzzle).getHeight(); i++) {
       for (int j = 0; j < this.library.getPuzzle(this.activePuzzle).getWidth(); j++) {
-        System.out.println("999");
         if (this.library.getPuzzle(this.activePuzzle).getCellType(i, j) == CellType.CORRIDOR) {
           if (this.lamp[i][j]) {
-            System.out.println("a");
             removeLamp(i, j);
           }
         }
@@ -218,7 +206,6 @@ public class ModelImpl implements Model {
   }
 
   public boolean isClueSatisfied(int r, int c) {
-    System.out.println("666");
     if (r < 0
         || c < 0
         || r >= this.library.getPuzzle(this.activePuzzle).getHeight()
@@ -228,7 +215,6 @@ public class ModelImpl implements Model {
     if (this.library.getPuzzle(activePuzzle).getCellType(r, c) != CellType.CLUE) {
       throw new IllegalArgumentException();
     }
-    System.out.println("555");
     int lampCounter = 0;
     if (r - 1 >= 0) {
       if (this.lamp[r - 1][c]) {
@@ -256,23 +242,16 @@ public class ModelImpl implements Model {
   public boolean isSolved() {
     for (int i = 0; i < this.library.getPuzzle(this.activePuzzle).getHeight(); i++) {
       for (int j = 0; j < this.library.getPuzzle(this.activePuzzle).getWidth(); j++) {
-        System.out.println("999");
         if (this.library.getPuzzle(this.activePuzzle).getCellType(i, j) == CellType.CORRIDOR) {
           if (!isLit(i, j)) {
-            System.out.println("a");
             return false;
           }
-          System.out.println("888");
           if (isLampIllegal(i, j)) {
-            System.out.println("b");
             return false;
           }
-          System.out.println("777");
         }
         if (this.library.getPuzzle(this.activePuzzle).getCellType(i, j) == CellType.CLUE) {
-          System.out.println("c");
           if (!isClueSatisfied(i, j)) {
-            System.out.println("d");
             return false;
           }
         }
