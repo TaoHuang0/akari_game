@@ -23,8 +23,8 @@ public class ModelImpl implements Model {
   public void addLamp(int r, int c) {
     if (r < 0
         || c < 0
-        || r >= this.library.getPuzzle(this.activePuzzle).getWidth()
-        || c >= this.library.getPuzzle(this.activePuzzle).getHeight()) {
+        || r >= this.library.getPuzzle(this.activePuzzle).getHeight()
+        || c >= this.library.getPuzzle(this.activePuzzle).getWidth()) {
       throw new IndexOutOfBoundsException();
     }
     if (this.library.getPuzzle(activePuzzle).getCellType(r, c) != CellType.CORRIDOR) {
@@ -38,8 +38,8 @@ public class ModelImpl implements Model {
   public void removeLamp(int r, int c) {
     if (r < 0
         || c < 0
-        || r >= this.library.getPuzzle(this.activePuzzle).getWidth()
-        || c >= this.library.getPuzzle(this.activePuzzle).getHeight()) {
+        || r >= this.library.getPuzzle(this.activePuzzle).getHeight()
+        || c >= this.library.getPuzzle(this.activePuzzle).getWidth()) {
       throw new IndexOutOfBoundsException();
     }
     if (this.library.getPuzzle(activePuzzle).getCellType(r, c) != CellType.CORRIDOR) {
@@ -53,8 +53,8 @@ public class ModelImpl implements Model {
   public boolean isLit(int r, int c) {
     if (r < 0
         || c < 0
-        || r >= this.library.getPuzzle(this.activePuzzle).getWidth()
-        || c >= this.library.getPuzzle(this.activePuzzle).getHeight()) {
+        || r >= this.library.getPuzzle(this.activePuzzle).getHeight()
+        || c >= this.library.getPuzzle(this.activePuzzle).getWidth()) {
       throw new IndexOutOfBoundsException();
     }
     if (this.library.getPuzzle(activePuzzle).getCellType(r, c) != CellType.CORRIDOR) {
@@ -104,8 +104,8 @@ public class ModelImpl implements Model {
   public boolean isLamp(int r, int c) {
     if (r < 0
         || c < 0
-        || r >= this.library.getPuzzle(this.activePuzzle).getWidth()
-        || c >= this.library.getPuzzle(this.activePuzzle).getHeight()) {
+        || r >= this.library.getPuzzle(this.activePuzzle).getHeight()
+        || c >= this.library.getPuzzle(this.activePuzzle).getWidth()) {
       throw new IndexOutOfBoundsException();
     }
     if (this.library.getPuzzle(activePuzzle).getCellType(r, c) != CellType.CORRIDOR) {
@@ -116,12 +116,12 @@ public class ModelImpl implements Model {
 
   public boolean isLampIllegal(int r, int c) {
     System.out.println("row: " + r + " column: " + c);
-    System.out.println(this.library.getPuzzle(this.activePuzzle).getWidth());
     System.out.println(this.library.getPuzzle(this.activePuzzle).getHeight());
+    System.out.println(this.library.getPuzzle(this.activePuzzle).getWidth());
     if (r < 0
         || c < 0
-        || r >= this.library.getPuzzle(this.activePuzzle).getWidth()
-        || c >= this.library.getPuzzle(this.activePuzzle).getHeight()) {
+        || r >= this.library.getPuzzle(this.activePuzzle).getHeight()
+        || c >= this.library.getPuzzle(this.activePuzzle).getWidth()) {
       System.out.println("123");
       throw new IndexOutOfBoundsException();
     }
@@ -200,8 +200,8 @@ public class ModelImpl implements Model {
   public boolean isClueSatisfied(int r, int c) {
     if (r < 0
         || c < 0
-        || r >= this.library.getPuzzle(this.activePuzzle).getWidth()
-        || c >= this.library.getPuzzle(this.activePuzzle).getHeight()) {
+        || r >= this.library.getPuzzle(this.activePuzzle).getHeight()
+        || c >= this.library.getPuzzle(this.activePuzzle).getWidth()) {
       throw new IndexOutOfBoundsException();
     }
     if (this.library.getPuzzle(activePuzzle).getCellType(r, c) != CellType.CLUE) {
