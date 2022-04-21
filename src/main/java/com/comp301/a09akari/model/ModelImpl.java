@@ -198,6 +198,7 @@ public class ModelImpl implements Model {
   }
 
   public boolean isClueSatisfied(int r, int c) {
+    System.out.println("666");
     if (r < 0
         || c < 0
         || r >= this.library.getPuzzle(this.activePuzzle).getHeight()
@@ -207,6 +208,7 @@ public class ModelImpl implements Model {
     if (this.library.getPuzzle(activePuzzle).getCellType(r, c) != CellType.CLUE) {
       throw new IllegalArgumentException();
     }
+    System.out.println("555");
     int lampCounter = 0;
     if (r - 1 >= 0) {
       if (this.lamp[r - 1][c]) {
@@ -249,7 +251,7 @@ public class ModelImpl implements Model {
         lampCounter++;
       }
     }
-    return lampCounter == this.library.getPuzzle(this.activePuzzle).getClue(r, c);
+    return (lampCounter == this.library.getPuzzle(this.activePuzzle).getClue(r, c));
   }
 
   public boolean isSolved() {
