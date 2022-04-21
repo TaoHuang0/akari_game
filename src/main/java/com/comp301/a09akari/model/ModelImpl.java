@@ -209,6 +209,9 @@ public class ModelImpl implements Model {
             System.out.println("a");
             removeLamp(i, j);
           }
+        }
+      }
+    }
     for (ModelObserver o : this.observers) {
       o.update(this);
     }
