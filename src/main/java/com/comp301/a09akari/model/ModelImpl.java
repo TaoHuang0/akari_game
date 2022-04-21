@@ -256,13 +256,17 @@ public class ModelImpl implements Model {
     for (int i = 0; i < this.library.getPuzzle(this.activePuzzle).getHeight(); i++) {
       for (int j = 0; j < this.library.getPuzzle(this.activePuzzle).getWidth(); j++) {
         if (!isLit(i, j)) {
+          System.out.println("a");
           return false;
         }
         if (isLampIllegal(i, j)) {
+          System.out.println("b");
           return false;
         }
         if (this.library.getPuzzle(this.activePuzzle).getCellType(i, j) == CellType.CLUE) {
+          System.out.println("c");
           if (!isClueSatisfied(i, j)) {
+            System.out.println("d");
             return false;
           }
         }
