@@ -33,6 +33,9 @@ public class ModelImpl implements Model {
     if (!this.lamp[r][c]) {
       this.lamp[r][c] = true;
     }
+    for (ModelObserver o : this.observers) {
+      o.update(this);
+    }
   }
 
   public void removeLamp(int r, int c) {
@@ -47,6 +50,9 @@ public class ModelImpl implements Model {
     }
     if (this.lamp[r][c]) {
       this.lamp[r][c] = false;
+    }
+    for (ModelObserver o : this.observers) {
+      o.update(this);
     }
   }
 
@@ -185,6 +191,9 @@ public class ModelImpl implements Model {
       throw new IndexOutOfBoundsException();
     }
     this.activePuzzle = index;
+    for (ModelObserver o : this.observers) {
+      o.update(this);
+    }
   }
 
   public int getPuzzleLibrarySize() {
@@ -195,6 +204,9 @@ public class ModelImpl implements Model {
     this.lamp =
         new boolean[this.library.getPuzzle(this.activePuzzle).getHeight()]
             [this.library.getPuzzle(this.activePuzzle).getWidth()];
+    for (ModelObserver o : this.observers) {
+      o.update(this);
+    }
   }
 
   public boolean isClueSatisfied(int r, int c) {
