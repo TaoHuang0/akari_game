@@ -63,7 +63,7 @@ public class ModelImpl implements Model {
     if (this.lamp[r][c]) {
       return true;
     }
-    if(this.library.getPuzzle(this.activePuzzle).getCellType(r, c) != CellType.CORRIDOR) {
+    if (this.library.getPuzzle(this.activePuzzle).getCellType(r, c) != CellType.CORRIDOR) {
       return true;
     }
     for (int i = c; i >= 0; i--) {
@@ -253,8 +253,8 @@ public class ModelImpl implements Model {
   }
 
   public boolean isSolved() {
-    for (int i = 0; i < this.library.getPuzzle(this.activePuzzle).getWidth(); i++) {
-      for (int j = 0; j < this.library.getPuzzle(this.activePuzzle).getHeight(); j++) {
+    for (int i = 0; i < this.library.getPuzzle(this.activePuzzle).getHeight(); i++) {
+      for (int j = 0; j < this.library.getPuzzle(this.activePuzzle).getWidth(); j++) {
         if (!isLit(i, j)) {
           return false;
         }
