@@ -201,9 +201,14 @@ public class ModelImpl implements Model {
   }
 
   public void resetPuzzle() {
-    this.lamp =
-        new boolean[this.library.getPuzzle(this.activePuzzle).getHeight()]
-            [this.library.getPuzzle(this.activePuzzle).getWidth()];
+    for (int i = 0; i < this.library.getPuzzle(this.activePuzzle).getHeight(); i++) {
+      for (int j = 0; j < this.library.getPuzzle(this.activePuzzle).getWidth(); j++) {
+        System.out.println("999");
+        if (this.library.getPuzzle(this.activePuzzle).getCellType(i, j) == CellType.CORRIDOR) {
+          if (this.lamp[i][j]) {
+            System.out.println("a");
+            removeLamp(i, j);
+          }
     for (ModelObserver o : this.observers) {
       o.update(this);
     }
