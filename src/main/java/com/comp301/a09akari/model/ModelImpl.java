@@ -63,6 +63,9 @@ public class ModelImpl implements Model {
     if (this.lamp[r][c]) {
       return true;
     }
+    if(this.library.getPuzzle(this.activePuzzle).getCellType(r, c) != CellType.CORRIDOR) {
+      return true;
+    }
     for (int i = c; i >= 0; i--) {
       if (this.library.getPuzzle(this.activePuzzle).getCellType(r, i) != CellType.CORRIDOR) {
         break;
