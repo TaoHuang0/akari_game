@@ -255,6 +255,7 @@ public class ModelImpl implements Model {
   public boolean isSolved() {
     for (int i = 0; i < this.library.getPuzzle(this.activePuzzle).getHeight(); i++) {
       for (int j = 0; j < this.library.getPuzzle(this.activePuzzle).getWidth(); j++) {
+        System.out.println("999");
         if (!isLit(i, j)) {
           System.out.println("a");
           return false;
