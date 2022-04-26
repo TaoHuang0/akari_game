@@ -65,4 +65,8 @@ public class ControllerImpl implements AlternateMvcController {
   public Puzzle getActivePuzzle() {
     return model.getActivePuzzle();
   }
+
+  public void setModel(Model model) {
+    this.model = model;
+  }
 }

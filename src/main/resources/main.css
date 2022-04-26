@@ -5,3 +5,50 @@
  * JavaFX start() method:
  *   scene.getStylesheets().add("main.css");
  */
+
+ .layout {
+   -fx-background-color: #faf8f0;
+   -fx-font-family: Arial, sans-serif;
+   -fx-font-weight: bold;
+   -fx-font-size: 12px;
+   -fx-padding: 10px;
+ }
+
+ .tile {
+   -fx-pref-width: 70px;
+   -fx-pref-height: 70px;
+   -fx-font-size: 34px;
+   -fx-alignment: center;
+   -fx-text-fill: #ffffff;
+   -fx-background-color: #FAFFFA;
+ }
+
+ .tile-0 {
+   -fx-background-color: #BCBFBC;
+   -fx-text-fill: #000000;
+ }
+
+ .tile-1 {
+   -fx-background-color: #BCBFBC;
+   -fx-text-fill: #000000;
+ }
+
+ .tile-2 {
+   -fx-background-color: #BCBFBC;
+   -fx-text-fill: #000000;
+ }
+
+ .tile-3 {
+   -fx-background-color: #BCBFBC;
+   -fx-text-fill: #000000;
+ }
+
+ .tile-4 {
+    -fx-background-color: #BCBFBC;
+    -fx-text-fill: #000000;
+  }
+
+  .tile-5 {
+      -fx-background-color: #BCBFBC;
+      -fx-text-fill: #000000;
+    }
