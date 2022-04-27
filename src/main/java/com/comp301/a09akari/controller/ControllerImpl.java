@@ -16,22 +16,18 @@ public class ControllerImpl implements AlternateMvcController {
   public void clickNextPuzzle() {
     if (model.getActivePuzzleIndex() < model.getPuzzleLibrarySize() - 1) {
       model.setActivePuzzleIndex(model.getActivePuzzleIndex() + 1);
-    } else {
-      model.setActivePuzzleIndex(0);
     }
   }
 
   public void clickPrevPuzzle() {
     if (model.getActivePuzzleIndex() > 0) {
       model.setActivePuzzleIndex(model.getActivePuzzleIndex() - 1);
-    } else {
-      model.setActivePuzzleIndex(model.getPuzzleLibrarySize() - 1);
     }
   }
 
   public void clickRandPuzzle() {
     Random rand = new Random();
-    int random = rand.nextInt(model.getPuzzleLibrarySize() - 1);
+    int random = rand.nextInt(model.getPuzzleLibrarySize());
     if (model.getActivePuzzleIndex() != random) {
       model.setActivePuzzleIndex(random);
     } else {

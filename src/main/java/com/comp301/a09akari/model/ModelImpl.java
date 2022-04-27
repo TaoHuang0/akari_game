@@ -16,7 +16,7 @@ public class ModelImpl implements Model {
     this.library = library;
     this.activePuzzle = 0;
     this.lamp =
-        new boolean[this.library.getPuzzle(0).getHeight()][this.library.getPuzzle(0).getWidth()];
+        new boolean[this.library.getPuzzle(this.activePuzzle).getHeight()][this.library.getPuzzle(this.activePuzzle).getWidth()];
     this.observers = new ArrayList<ModelObserver>();
   }
 

@@ -13,6 +13,14 @@
    -fx-font-size: 12px;
  }
 
+ .board {
+   -fx-background-color: #000000;
+   -fx-alignment: center;
+   -fx-max-width: 600px;
+   -fx-max-height: 600px;
+
+ }
+
  .controllerLayout {
    -fx-font-weight: bold;
    -fx-font-size: 12px;

@@ -17,20 +17,19 @@ public class PuzzleView implements FXComponent {
   }
 
   public Parent render() {
-    GridPane layout = new GridPane();
     // set up board
     GridPane board = new GridPane();
     board.setHgap(3);
     board.setVgap(3);
     board.getStyleClass().add("board");
-    board.setMaxSize(600, 600);
-    layout.getChildren().add(board);
 
     // set up grids
     for (int i = 0; i < controller.getActivePuzzle().getHeight(); i++) {
       for (int j = 0; j < controller.getActivePuzzle().getWidth(); j++) {
+        System.out.println("P1");
         if (controller.getActivePuzzle().getCellType(i, j) == CellType.CORRIDOR) {
           if (controller.isLamp(i, j)) {
+            System.out.println("P2");
             Button lamp = new Button("U+1F4A1");
             lamp.getStyleClass().add("lamp");
             board.add(lamp, i, j);
@@ -40,7 +39,9 @@ public class PuzzleView implements FXComponent {
                 (ActionEvent event) -> {
                   controller.clickCell(a, b);
                 });
+            System.out.println("P3");
           } else if (controller.isLit(i, j)) {
+            System.out.println("P4");
             Button litButton = new Button();
             litButton.getStyleClass().add("litButton");
             board.add(litButton, i, j);
@@ -50,7 +51,9 @@ public class PuzzleView implements FXComponent {
                 (ActionEvent event) -> {
                   controller.clickCell(c, d);
                 });
+            System.out.println("P5");
           } else {
+            System.out.println("P6");
             Button normalButton = new Button();
             normalButton.getStyleClass().add("normalButton");
             board.add(normalButton, i, j);
@@ -61,20 +64,29 @@ public class PuzzleView implements FXComponent {
                   controller.clickCell(e, f);
                 });
           }
+          System.out.println("P7");
         }
         if (controller.getActivePuzzle().getCellType(i, j) == CellType.CLUE) {
+          System.out.println("P8");
           if (controller.isClueSatisfied(i, j)) {
+            System.out.println("P9");
             board.add(makeTile(controller.getActivePuzzle().getClue(i, j) + 7), i, j);
+            System.out.println("P10");
           } else {
+            System.out.println("P11");
             board.add(makeTile(controller.getActivePuzzle().getClue(i, j)), i, j);
+            System.out.println("P12");
           }
         }
         if (controller.getActivePuzzle().getCellType(i, j) == CellType.WALL) {
+          System.out.println("P13");
           board.add(makeTile(5), i, j);
+          System.out.println("P14");
         }
       }
     }
-    return layout;
+    System.out.println("-------------------------------------------------------------------------");
+    return board;
   }
 
   private static Label makeTile(int num) {
