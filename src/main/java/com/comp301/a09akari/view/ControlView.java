@@ -24,7 +24,8 @@ public class ControlView implements FXComponent {
     Button switchPuzzlePreviousBut = new Button("<<");
     Button randomPuzzleBut = new Button("Shuffle Puzzle");
     Label switchLabel = new Label("Switch Puzzle");
-    Label instructions = new Label("Place light bulbs on the grid to make every white square is lit!");
+    Label instructions =
+        new Label("Place light bulbs on the grid to make every white square is lit!");
 
     switchPuzzleNextBut.setOnAction(
         (ActionEvent event) -> {

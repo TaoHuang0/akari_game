@@ -7,6 +7,8 @@ import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
 public class PuzzleView implements FXComponent {
@@ -29,8 +31,12 @@ public class PuzzleView implements FXComponent {
         System.out.println("P1");
         if (controller.getActivePuzzle().getCellType(i, j) == CellType.CORRIDOR) {
           if (controller.isLamp(i, j)) {
-            System.out.println("P2");
-            Button lamp = new Button("U+1F4A1");
+            Image view = new Image("light-bulb.png");
+            ImageView image = new ImageView(view);
+            image.setFitHeight(17);
+            image.setFitWidth(17);
+            Button lamp = new Button();
+            lamp.setGraphic(image);
             lamp.getStyleClass().add("lamp");
             board.add(lamp, i, j);
             int a = i;

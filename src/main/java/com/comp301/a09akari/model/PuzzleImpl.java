@@ -18,7 +18,7 @@ public class PuzzleImpl implements Puzzle {
   }
 
   public CellType getCellType(int r, int c) {
-    if (r < 0 || c < 0 || r >= this.board[0].length || c >= this.board.length) {
+    if (r < 0 || c < 0 || r >= this.board.length || c >= this.board[0].length) {
       throw new IndexOutOfBoundsException();
     }
     if (this.board[r][c] == 0
@@ -35,7 +35,7 @@ public class PuzzleImpl implements Puzzle {
   }
 
   public int getClue(int r, int c) {
-    if (r < 0 || c < 0 || r >= this.board[0].length || c >= this.board.length) {
+    if (r < 0 || c < 0 || r >= this.board.length || c >= this.board[0].length) {
       throw new IndexOutOfBoundsException();
     }
     if (this.getCellType(r, c) != CellType.CLUE) {

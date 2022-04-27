@@ -84,7 +84,7 @@
    -fx-background-radius: 4px;
    -fx-font-size: 15px;
    -fx-padding: 10px;
-   -fx-background-color: #ffffff
+   -fx-background-color: #ffffff;
 }
 
  .tile {
@@ -159,11 +159,29 @@
 .litButton {
    -fx-pref-width: 70px;
    -fx-pref-height: 70px;
-   -fx-background-color: #fcf400;
+   -fx-background-color: #fffb84;
 }
 
 .lamp {
     -fx-pref-width: 70px;
     -fx-pref-height: 70px;
-    -fx-background-color: #fcf400;
+    -fx-background-color: #fffb84;
+    -fx-alignment: center;
+    -fx-font-size: 30px;
+    -fx-text-fill: #000000;
  }
+
+ .solvdeMes {
+    -fx-font-family: Arial, sans-serif;
+    -fx-font-weight: bold;
+    -fx-pref-width: 600px;
+    -fx-pref-height: 10px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-font-size: 15px;
+    -fx-padding: 10px;
+    -fx-background-color: #ffffff;
+    -fx-alignment: center;
+    -fx-font-color: #ffc000
+ }
+

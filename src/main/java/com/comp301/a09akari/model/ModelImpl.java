@@ -16,7 +16,8 @@ public class ModelImpl implements Model {
     this.library = library;
     this.activePuzzle = 0;
     this.lamp =
-        new boolean[this.library.getPuzzle(this.activePuzzle).getHeight()][this.library.getPuzzle(this.activePuzzle).getWidth()];
+        new boolean[this.library.getPuzzle(this.activePuzzle).getHeight()]
+            [this.library.getPuzzle(this.activePuzzle).getWidth()];
     this.observers = new ArrayList<ModelObserver>();
   }
 
@@ -181,6 +182,7 @@ public class ModelImpl implements Model {
       throw new IndexOutOfBoundsException();
     }
     this.activePuzzle = index;
+    this.lamp = new boolean[getActivePuzzle().getHeight()][getActivePuzzle().getWidth()];
     for (ModelObserver o : this.observers) {
       o.update(this);
     }

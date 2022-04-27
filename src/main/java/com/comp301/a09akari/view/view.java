@@ -7,28 +7,34 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
-public class view implements FXComponent{
-    private AlternateMvcController controller;
-    private FXComponent ControlView;
-    private FXComponent PuzzleView;
+import javax.accessibility.AccessibleContext;
 
-    public view(AlternateMvcController controller) {
-        this.controller = controller;
-        this.ControlView = new ControlView(controller);
-        this.PuzzleView = new PuzzleView(controller);
-    }
+public class view implements FXComponent {
+  private AlternateMvcController controller;
+  private FXComponent ControlView;
+  private FXComponent PuzzleView;
+  private FXComponent MessageView;
 
-    public Parent render() {
-        VBox layout = new VBox();
-        layout.getStyleClass().add("layout");
-        layout.getChildren().add(ControlView.render());
-        layout.getChildren().add(PuzzleView.render());
-        //layout.getChildren().add(MessageView.render());
-        return layout;
-    }
+  public view(AlternateMvcController controller) {
+    this.controller = controller;
+    this.ControlView = new ControlView(controller);
+    this.PuzzleView = new PuzzleView(controller);
+    this.MessageView = new MessageView(controller);
+  }
 
-    @Override
-    public void update(Model model) {
-        this.controller.setModel(model);
+  public Parent render() {
+    VBox layout = new VBox();
+    layout.getStyleClass().add("layout");
+    layout.getChildren().add(ControlView.render());
+    layout.getChildren().add(PuzzleView.render());
+    if (controller.isSolved()) {
+      layout.getChildren().add(MessageView.render());
     }
+    return layout;
+  }
+
+  @Override
+  public void update(Model model) {
+    this.controller.setModel(model);
+  }
 }

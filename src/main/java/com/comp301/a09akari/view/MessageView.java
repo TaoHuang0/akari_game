@@ -3,9 +3,8 @@ package com.comp301.a09akari.view;
 import com.comp301.a09akari.controller.AlternateMvcController;
 import com.comp301.a09akari.model.Model;
 import javafx.scene.Parent;
-import javafx.scene.layout.StackPane;
-
-import java.awt.*;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 
 public class MessageView implements FXComponent {
   private AlternateMvcController controller;
@@ -15,10 +14,10 @@ public class MessageView implements FXComponent {
   }
 
   public Parent render() {
-    StackPane pane = new StackPane();
-    // Label winLabel = new Label("YOU WIN!");
-    // pane.getChildren().add(winLabel);
-    return pane;
+    VBox solvdeMes = new VBox();
+    solvdeMes.getChildren().add(new Label("Congratulation, You Solved the Puzzle!"));
+    solvdeMes.getStyleClass().add("solvdeMes");
+    return solvdeMes;
   }
 
   @Override
