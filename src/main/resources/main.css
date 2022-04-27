@@ -7,12 +7,77 @@
  */
 
  .layout {
-   -fx-background-color: #faf8f0;
+   -fx-background-color: #000000;
    -fx-font-family: Arial, sans-serif;
    -fx-font-weight: bold;
    -fx-font-size: 12px;
-   -fx-padding: 10px;
  }
+
+ .controllerLayout {
+   -fx-font-weight: bold;
+   -fx-font-size: 12px;
+ }
+
+ .switchLabel {
+    -fx-background-color: #f2f503;
+    -fx-font-family: Arial, sans-serif;
+    -fx-font-weight: bold;
+    -fx-pref-width: 200px;
+    -fx-pref-height: 40px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-font-size: 22px;
+    -fx-alignment: center;
+    -fx-padding: 2px;
+ }
+
+ .switchPuzzlePreviousBut {
+   -fx-font-family: Arial, sans-serif;
+   -fx-font-weight: bold;
+   -fx-pref-width: 200px;
+   -fx-pref-height: 40px;
+   -fx-border-radius: 4px;
+   -fx-background-radius: 4px;
+   -fx-font-size: 22px;
+   -fx-alignment: center;
+   -fx-padding: 2px;
+ }
+
+ .switchPuzzleNextBut {
+   -fx-font-family: Arial, sans-serif;
+   -fx-font-weight: bold;
+   -fx-pref-width: 200px;
+   -fx-pref-height: 40px;
+   -fx-border-radius: 4px;
+   -fx-background-radius: 4px;
+   -fx-font-size: 22px;
+   -fx-alignment: center;
+   -fx-padding: 2px;
+ }
+
+.randomPuzzleBut {
+   -fx-font-family: Arial, sans-serif;
+   -fx-font-weight: bold;
+   -fx-pref-width: 300px;
+   -fx-pref-height: 40px;
+   -fx-border-radius: 4px;
+   -fx-background-radius: 4px;
+   -fx-font-size: 22px;
+   -fx-alignment: center;
+   -fx-padding: 10px;
+}
+
+.instructions {
+   -fx-font-family: Arial, sans-serif;
+   -fx-font-weight: bold;
+   -fx-pref-width: 600px;
+   -fx-pref-height: 10px;
+   -fx-border-radius: 4px;
+   -fx-background-radius: 4px;
+   -fx-font-size: 15px;
+   -fx-padding: 10px;
+   -fx-background-color: #ffffff
+}
 
  .tile {
    -fx-pref-width: 70px;
@@ -48,7 +113,49 @@
     -fx-text-fill: #000000;
   }
 
-  .tile-5 {
-      -fx-background-color: #BCBFBC;
-      -fx-text-fill: #000000;
-    }
+.tile-5 {
+    -fx-background-color: #000000;
+}
+
+.tile-7 {
+    -fx-background-color: #38761d;
+    -fx-text-fill: #000000;
+}
+
+.tile-8 {
+    -fx-background-color: #38761d;
+    -fx-text-fill: #000000;
+}
+
+.tile-9 {
+    -fx-background-color: #38761d;
+    -fx-text-fill: #000000;
+}
+
+.tile-10 {
+    -fx-background-color: #38761d;
+    -fx-text-fill: #000000;
+}
+
+.tile-11 {
+    -fx-background-color: #38761d;
+    -fx-text-fill: #000000;
+}
+
+.normalButton {
+   -fx-pref-width: 70px;
+   -fx-pref-height: 70px;
+   -fx-background-color: #ffffff;
+}
+
+.litButton {
+   -fx-pref-width: 70px;
+   -fx-pref-height: 70px;
+   -fx-background-color: #fcf400;
+}
+
+.lamp {
+    -fx-pref-width: 70px;
+    -fx-pref-height: 70px;
+    -fx-background-color: #fcf400;
+ }

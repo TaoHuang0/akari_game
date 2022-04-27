@@ -1,29 +1,94 @@
 package com.comp301.a09akari.view;
 
 import com.comp301.a09akari.controller.AlternateMvcController;
+import com.comp301.a09akari.model.CellType;
 import com.comp301.a09akari.model.Model;
+import javafx.event.ActionEvent;
 import javafx.scene.Parent;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
 
 public class PuzzleView implements FXComponent {
   private AlternateMvcController controller;
-  private FXComponent PuzzleTopView;
-  private FXComponent PuzzleGridView;
-  private FXComponent PuzzleButtomView;
-  private FXComponent instructionsView;
 
   public PuzzleView(AlternateMvcController controller) {
     this.controller = controller;
-    this.PuzzleGridView = new PuzzleGridView(controller);
-    this.instructionsView = new instructionsView(controller);
   }
 
   public Parent render() {
-    VBox layout = new VBox();
-    layout.getStyleClass().add("layout");
-    layout.getChildren().add(instructionsView.render());
-    layout.getChildren().add(PuzzleGridView.render());
+    GridPane layout = new GridPane();
+    // set up board
+    GridPane board = new GridPane();
+    board.setHgap(3);
+    board.setVgap(3);
+    board.getStyleClass().add("board");
+    board.setMaxSize(600, 600);
+    layout.getChildren().add(board);
+
+    // set up grids
+    for (int i = 0; i < controller.getActivePuzzle().getHeight(); i++) {
+      for (int j = 0; j < controller.getActivePuzzle().getWidth(); j++) {
+        if (controller.getActivePuzzle().getCellType(i, j) == CellType.CORRIDOR) {
+          if (controller.isLamp(i, j)) {
+            Button lamp = new Button("U+1F4A1");
+            lamp.getStyleClass().add("lamp");
+            board.add(lamp, i, j);
+            int a = i;
+            int b = j;
+            lamp.setOnAction(
+                (ActionEvent event) -> {
+                  controller.clickCell(a, b);
+                });
+          } else if (controller.isLit(i, j)) {
+            Button litButton = new Button();
+            litButton.getStyleClass().add("litButton");
+            board.add(litButton, i, j);
+            int c = i;
+            int d = j;
+            litButton.setOnAction(
+                (ActionEvent event) -> {
+                  controller.clickCell(c, d);
+                });
+          } else {
+            Button normalButton = new Button();
+            normalButton.getStyleClass().add("normalButton");
+            board.add(normalButton, i, j);
+            int e = i;
+            int f = j;
+            normalButton.setOnAction(
+                (ActionEvent event) -> {
+                  controller.clickCell(e, f);
+                });
+          }
+        }
+        if (controller.getActivePuzzle().getCellType(i, j) == CellType.CLUE) {
+          if (controller.isClueSatisfied(i, j)) {
+            board.add(makeTile(controller.getActivePuzzle().getClue(i, j) + 7), i, j);
+          } else {
+            board.add(makeTile(controller.getActivePuzzle().getClue(i, j)), i, j);
+          }
+        }
+        if (controller.getActivePuzzle().getCellType(i, j) == CellType.WALL) {
+          board.add(makeTile(5), i, j);
+        }
+      }
+    }
     return layout;
+  }
+
+  private static Label makeTile(int num) {
+    Label tile;
+    if (num == 5) {
+      tile = new Label();
+    } else if (num >= 7) { // satisfy -7
+      tile = new Label(String.valueOf(num - 7));
+    } else {
+      tile = new Label(String.valueOf(num));
+    }
+    tile.getStyleClass().add("tile");
+    tile.getStyleClass().add("tile-" + num);
+    return tile;
   }
 
   @Override

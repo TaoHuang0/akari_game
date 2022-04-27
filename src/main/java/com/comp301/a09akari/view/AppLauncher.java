@@ -40,6 +40,7 @@ public class AppLauncher extends Application {
 
     stage.setScene(scene);
     stage.setTitle("Play light up!");
+    stage.sizeToScene();
     stage.show();
   }
 }

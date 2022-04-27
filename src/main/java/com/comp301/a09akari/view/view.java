@@ -19,11 +19,11 @@ public class view implements FXComponent{
     }
 
     public Parent render() {
-        BorderPane layout = new BorderPane();
+        VBox layout = new VBox();
         layout.getStyleClass().add("layout");
         layout.getChildren().add(ControlView.render());
-        layout.setCenter(PuzzleView.render());
-
+        layout.getChildren().add(PuzzleView.render());
+        //layout.getChildren().add(MessageView.render());
         return layout;
     }
 

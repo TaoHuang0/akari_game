@@ -1,5 +1,6 @@
 package com.comp301.a09akari.controller;
 
+import com.comp301.a09akari.model.CellType;
 import com.comp301.a09akari.model.Model;
 import com.comp301.a09akari.model.Puzzle;
 
@@ -16,7 +17,7 @@ public class ControllerImpl implements AlternateMvcController {
     if (model.getActivePuzzleIndex() < model.getPuzzleLibrarySize() - 1) {
       model.setActivePuzzleIndex(model.getActivePuzzleIndex() + 1);
     } else {
-      System.out.println("This is the last puzzle");
+      model.setActivePuzzleIndex(0);
     }
   }
 
@@ -24,7 +25,7 @@ public class ControllerImpl implements AlternateMvcController {
     if (model.getActivePuzzleIndex() > 0) {
       model.setActivePuzzleIndex(model.getActivePuzzleIndex() - 1);
     } else {
-      System.out.println("This is the first puzzle");
+      model.setActivePuzzleIndex(model.getPuzzleLibrarySize() - 1);
     }
   }
 
@@ -43,7 +44,13 @@ public class ControllerImpl implements AlternateMvcController {
   }
 
   public void clickCell(int r, int c) {
-    model.addLamp(r, c);
+    if (model.getActivePuzzle().getCellType(r, c) == CellType.CORRIDOR) {
+      if (model.isLamp(r, c)) {
+        model.removeLamp(r, c);
+      } else {
+        model.addLamp(r, c);
+      }
+    }
   }
 
   public boolean isLit(int r, int c) {
