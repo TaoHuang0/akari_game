@@ -84,5 +84,4 @@ public class ControllerImpl implements AlternateMvcController {
   public int getTotalPuzzles() {
     return model.getPuzzleLibrarySize();
   }
-
 }
