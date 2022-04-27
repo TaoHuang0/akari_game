@@ -30,12 +30,7 @@ public class PuzzleView implements FXComponent {
       for (int j = 0; j < controller.getActivePuzzle().getWidth(); j++) {
         if (controller.getActivePuzzle().getCellType(i, j) == CellType.CORRIDOR) {
           if (controller.isLamp(i, j)) {
-            Image view = new Image("light-bulb.png");
-            ImageView image = new ImageView(view);
-            image.setFitHeight(17);
-            image.setFitWidth(17);
             Button lamp = new Button();
-            lamp.setGraphic(image);
             lamp.getStyleClass().add("lamp");
             board.add(lamp, i, j);
             int a = i;
