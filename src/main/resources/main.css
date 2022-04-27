@@ -7,7 +7,6 @@
  */
 
  .layout {
-   -fx-background-color: #000000;
    -fx-font-family: Arial, sans-serif;
    -fx-font-weight: bold;
    -fx-font-size: 12px;
@@ -17,8 +16,7 @@
    -fx-background-color: #000000;
    -fx-alignment: center;
    -fx-max-width: 600px;
-   -fx-max-height: 600px;
-
+   -fx-max-height: 400px;
  }
 
  .controllerLayout {
@@ -27,7 +25,7 @@
  }
 
  .switchLabel {
-    -fx-background-color: #f2f503;
+    -fx-background-color: #fff2cc;
     -fx-font-family: Arial, sans-serif;
     -fx-font-weight: bold;
     -fx-pref-width: 200px;
@@ -75,6 +73,33 @@
    -fx-padding: 10px;
 }
 
+.PuzzleNumRow {
+   -fx-background-color: #0ace5e;
+}
+
+.totalPuzzles {
+   -fx-font-weight: bold;
+   -fx-pref-width: 200px;
+   -fx-pref-height: 10px;
+   -fx-border-radius: 4px;
+   -fx-background-radius: 4px;
+   -fx-font-size: 20px;
+   -fx-padding: 10px;
+   -fx-background-color: #0ace5e;
+}
+
+.PuzzleNum {
+   -fx-font-weight: bold;
+   -fx-pref-width: 100px;
+   -fx-pref-height: 10px;
+   -fx-border-radius: 4px;
+   -fx-background-radius: 4px;
+   -fx-font-size: 20px;
+   -fx-padding: 10px;
+   -fx-text-fill: #bf9000;
+   -fx-background-color: #0ace5e;
+}
+
 .instructions {
    -fx-font-family: Arial, sans-serif;
    -fx-font-weight: bold;
@@ -84,7 +109,7 @@
    -fx-background-radius: 4px;
    -fx-font-size: 15px;
    -fx-padding: 10px;
-   -fx-background-color: #ffffff;
+   -fx-background-color: #0ace5e;
 }
 
  .tile {
@@ -126,27 +151,27 @@
 }
 
 .tile-7 {
-    -fx-background-color: #38761d;
+    -fx-background-color: #169aa6;
     -fx-text-fill: #000000;
 }
 
 .tile-8 {
-    -fx-background-color: #38761d;
+    -fx-background-color: #169aa6;
     -fx-text-fill: #000000;
 }
 
 .tile-9 {
-    -fx-background-color: #38761d;
+    -fx-background-color: #169aa6;
     -fx-text-fill: #000000;
 }
 
 .tile-10 {
-    -fx-background-color: #38761d;
+    -fx-background-color: #169aa6;
     -fx-text-fill: #000000;
 }
 
 .tile-11 {
-    -fx-background-color: #38761d;
+    -fx-background-color: #169aa6;
     -fx-text-fill: #000000;
 }
 
@@ -182,6 +207,5 @@
     -fx-padding: 10px;
     -fx-background-color: #ffffff;
     -fx-alignment: center;
-    -fx-font-color: #ffc000
  }
 

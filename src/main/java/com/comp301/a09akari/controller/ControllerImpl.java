@@ -16,12 +16,16 @@ public class ControllerImpl implements AlternateMvcController {
   public void clickNextPuzzle() {
     if (model.getActivePuzzleIndex() < model.getPuzzleLibrarySize() - 1) {
       model.setActivePuzzleIndex(model.getActivePuzzleIndex() + 1);
+    } else if (model.getPuzzleLibrarySize() > 0) {
+      model.setActivePuzzleIndex(0);
     }
   }
 
   public void clickPrevPuzzle() {
     if (model.getActivePuzzleIndex() > 0) {
       model.setActivePuzzleIndex(model.getActivePuzzleIndex() - 1);
+    } else {
+      model.setActivePuzzleIndex(model.getPuzzleLibrarySize() - 1);
     }
   }
 
@@ -72,4 +76,13 @@ public class ControllerImpl implements AlternateMvcController {
   public void setModel(Model model) {
     this.model = model;
   }
+
+  public int puzzleIndex() {
+    return model.getActivePuzzleIndex();
+  }
+
+  public int getTotalPuzzles() {
+    return model.getPuzzleLibrarySize();
+  }
+
 }

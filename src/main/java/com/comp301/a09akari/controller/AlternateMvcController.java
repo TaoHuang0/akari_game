@@ -35,4 +35,8 @@ public interface AlternateMvcController {
   Puzzle getActivePuzzle();
 
   void setModel(Model model);
+
+  int puzzleIndex();
+
+  int getTotalPuzzles();
 }

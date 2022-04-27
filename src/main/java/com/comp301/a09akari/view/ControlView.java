@@ -16,16 +16,21 @@ public class ControlView implements FXComponent {
   }
 
   public Parent render() {
-    Pane layout = new VBox();
+    VBox layout = new VBox();
     HBox firstRow = new HBox();
     HBox secondRow = new HBox();
+    HBox thirdRow = new HBox();
     Button resetPuzzleBut = new Button("Reset Current Puzzle");
     Button switchPuzzleNextBut = new Button(">>");
     Button switchPuzzlePreviousBut = new Button("<<");
-    Button randomPuzzleBut = new Button("Shuffle Puzzle");
-    Label switchLabel = new Label("Switch Puzzle");
+    Button randomPuzzleBut = new Button("Random Puzzle");
+    Label switchLabel = new Label("Switch Puzzle:");
     Label instructions =
         new Label("Place light bulbs on the grid to make every white square is lit!");
+    Label totalPuzzlesIndex = new Label("Total Puzzles:");
+    Label totalPuzzles = new Label(String.valueOf(controller.getTotalPuzzles()));
+    Label puzzleIndex = new Label("You are in puzzle:");
+    Label puzzlenow = new Label(String.valueOf(controller.puzzleIndex() + 1));
 
     switchPuzzleNextBut.setOnAction(
         (ActionEvent event) -> {
@@ -48,11 +53,19 @@ public class ControlView implements FXComponent {
     firstRow.getChildren().add(switchPuzzleNextBut);
     secondRow.getChildren().add(randomPuzzleBut);
     secondRow.getChildren().add(resetPuzzleBut);
+    thirdRow.getChildren().add(totalPuzzlesIndex);
+    thirdRow.getChildren().add(totalPuzzles);
+    thirdRow.getChildren().add(puzzleIndex);
+    thirdRow.getChildren().add(puzzlenow);
     HBox.setHgrow(firstRow, Priority.ALWAYS);
     HBox.setHgrow(secondRow, Priority.ALWAYS);
+    HBox.setHgrow(thirdRow, Priority.ALWAYS);
     layout.getChildren().add(firstRow);
     layout.getChildren().add(secondRow);
+    layout.getChildren().add(thirdRow);
     layout.getChildren().add(instructions);
+
+    puzzleIndex.getStyleClass().add("puzzleIndex");
     layout.getStyleClass().add("controllerLayout");
     switchLabel.getStyleClass().add("switchLabel");
     switchPuzzlePreviousBut.getStyleClass().add("switchPuzzlePreviousBut");
@@ -60,6 +73,11 @@ public class ControlView implements FXComponent {
     randomPuzzleBut.getStyleClass().add("randomPuzzleBut");
     resetPuzzleBut.getStyleClass().add("randomPuzzleBut");
     instructions.getStyleClass().add("instructions");
+    totalPuzzlesIndex.getStyleClass().add("totalPuzzles");
+    puzzleIndex.getStyleClass().add("totalPuzzles");
+    totalPuzzles.getStyleClass().add("PuzzleNum");
+    puzzlenow.getStyleClass().add("PuzzleNum");
+    thirdRow.getStyleClass().add("PuzzleNumRow");
     return layout;
   }
 
